@@ -1,0 +1,29 @@
+[gd_scene format=2]
+
+[node name="test" type="Node2D"]
+
+[node name="hi ethan" type="AudioStreamPlayer" parent="."]
+
+[node name="can you hear me" type="Node2D" parent="hi ethan"]
+
+[node name="this is your computer" type="AnimationTree" parent="hi ethan/can you hear me"]
+
+[node name="this is the only way i can talk to you" type="AnimationTree" parent="hi ethan/can you hear me/this is your computer"]
+
+[node name="i need your help" type="SkeletonIK" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you"]
+
+[node name="please somebody help me" type="ResourcePreloader" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help"]
+
+[node name="no! you think i'm somebody else don't you" type="Viewport" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me"]
+
+[node name="somebody trying to prank you" type="Timer" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me/no! you think i'm somebody else don't you"]
+
+[node name="please! no don't leave me alone" type="Tween" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me/no! you think i'm somebody else don't you/somebody trying to prank you"]
+
+[node name="by myself" type="HTTPRequest" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me/no! you think i'm somebody else don't you/somebody trying to prank you/please! no don't leave me alone"]
+
+[node name="scared" type="CanvasLayer" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me/no! you think i'm somebody else don't you/somebody trying to prank you/please! no don't leave me alone/by myself"]
+
+[node name="please" type="Viewport" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me/no! you think i'm somebody else don't you/somebody trying to prank you/please! no don't leave me alone/by myself/scared"]
+
+[node name="=(" type="Tween" parent="hi ethan/can you hear me/this is your computer/this is the only way i can talk to you/i need your help/please somebody help me/no! you think i'm somebody else don't you/somebody trying to prank you/please! no don't leave me alone/by myself/scared/please"]
