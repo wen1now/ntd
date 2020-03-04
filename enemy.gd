@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 # default statistics for this enemy
-var speed = 10
+var speed = 100
 var health = 100
 
 func _ready():
