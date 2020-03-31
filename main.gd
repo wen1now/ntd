@@ -14,7 +14,7 @@ func _ready():
 
 func _process(delta):
 	# get_all_enemies_within(Vector2(300,100),100)
-	pass 
+	pass
 
 # function for testing purposes; will update later
 func new_enemy():
@@ -40,13 +40,53 @@ func get_all_enemies_within(center, radius):
 func get_first_enemy_within(center, radius):
 	var t = get_all_enemies_within(center, radius)
 	var m = 0
-	var r 
+	var r
 	for e in t:
 		if e.offset > m:
 			m = e.offset
 			r = e
 	return r
 
+func target(tower):
+	var r
+	var target = tower.TARGET if tower.TARGET != null else "FIRST"
+	if target == "FIRST":
+		r = get_first_enemy_within(tower.position, tower.RANGE)
+		if tower.orthogonal:
+			r = orthogonalize(tower.position, r)
+		return r
+
+func orthogonalize(center, enemy_list):
+	var r = []
+	for e in enemy_list:
+		if almost_orthogonal(e.position - center):
+			r.append(e)
+	return r 
+
+func almost_orthogonal(vect):
+	var LEEWAY = 0.01
+	return fmod(abs(vect.angle())+LEEWAY/2,PI/2) < LEEWAY
+
+# input: Vector2, Vector2, float
+# output: array of enemies near the ray, in order, from closest to furthest
+#         to the point. Width is the width (in pixels) of the beam
+func get_enemies_in_line(point, ray, width=10):
+	var t = []
+	var relative_position
+	var d1
+	var d2
+	ray = ray.normalized()
+	width = width / 2.0
+	for e in enemies:
+		relative_position = e.position - point
+		d1 = relative_position.cross(ray)
+		if d1 > width:
+			continue
+		d2 = relative_position.dot(ray)
+		t.append([d2,e])
+	t.sort()
+	return t
+		
 
 
 
