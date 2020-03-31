@@ -4,6 +4,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [node name="pathfollow" type="PathFollow2D"]
+rotate = false
 cubic_interp = false
 loop = false
 script = ExtResource( 1 )

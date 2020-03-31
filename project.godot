@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ntd"
+run/main_scene="main.tscn"
 config/icon="res://icon.png"
 
 [display]

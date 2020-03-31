@@ -3,6 +3,8 @@ extends PathFollow2D
 # default statistics for this enemy
 var speed = 100
 var health = 100
+var charge = 0
+var radius = 5
 
 func _ready():
 	offset = 0
