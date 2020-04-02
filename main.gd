@@ -4,17 +4,33 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var enemy_scene
+var ion_scene
 var enemies
+var tower_dict
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#setting up enemies
 	enemy_scene = load("res://enemy.tscn")
 	enemies = []
+	
+	#setting up towers
+	ion_scene = load("res://ion.tscn")
+	tower_dict = {"ion": ion_scene}
+	
+	#initialising the game, will edit later
 	new_enemy()
+	new_tower("ion",Vector2(64*6+32,64*5+32))
 
 func _process(delta):
 	# get_all_enemies_within(Vector2(300,100),100)
 	pass
+
+func new_tower(type,pos):
+	var tower
+	tower = tower_dict[type].instance()
+	tower.position = pos
+	$towers.add_child(tower)
 
 # function for testing purposes; will update later
 func new_enemy():
