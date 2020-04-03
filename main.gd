@@ -8,6 +8,18 @@ var ion_scene
 var enemies
 var tower_dict
 
+#so my idea for enemy waves is to have an array of arrays
+#each of these are of form [type, time]
+#and spawns enemy of that type at that time
+#so for example [[enemy1, 0], [enemy2, 1]]
+#where enemy1, 2 are themselves arrays containing enemy information
+#the way that the function would work would be to look at the
+#first entry and then check whether the time so far
+#exceeds the time of that enemy's spam
+#if so it spawns that enemy
+#and deletes the entry from the array
+#until the wave is over
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#setting up enemies

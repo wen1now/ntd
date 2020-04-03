@@ -1,9 +1,10 @@
 extends Sprite
 
 var TARGET = "FIRST"
-var RANGE = 200
+var RANGE = 300
 var BULLET_RANGE = 300
 var RELOAD = 0.1
+var DAMAGE = 5
 var can_shoot = false
 
 var orthogonal = true
@@ -31,7 +32,7 @@ func shoot():
 		distance = i[0]
 		enemy = i[1]
 		if distance < BULLET_RANGE:
-			enemy.health -= 1
+			enemy.health -= DAMAGE
 	can_shoot = false
 
 func _process(delta):
