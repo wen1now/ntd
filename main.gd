@@ -8,17 +8,21 @@ var ion_scene
 var enemies
 var tower_dict
 
+var timing = 0
+
 #so my idea for enemy waves is to have an array of arrays
-#each of these are of form [type, time]
-#and spawns enemy of that type at that time
-#so for example [[enemy1, 0], [enemy2, 1]]
-#where enemy1, 2 are themselves arrays containing enemy information
-#the way that the function would work would be to look at the
-#first entry and then check whether the time so far
-#exceeds the time of that enemy's spam
-#if so it spawns that enemy
-#and deletes the entry from the array
-#until the wave is over
+#each of these are of form [type, gap, repeat]
+#and spawns enemy of that type "gap" seconds after the previous enemy
+#and does so "repeat" number of times
+#so for example [[enemy1, 0.5, 10], [boss_enemy, 1,1]]
+#where enemy1 and boss_enemy are themselves arrays containing enemy information
+#after spawning an enemy you just delete the first element of the wave array
+
+#also why are we doing each
+
+var spawnwait = 1 #initialised to 1, so that you wait 1 second for first enemy
+
+var samplewave = [[[100, 100, 0, 5, "godot logo"], 1, 5], [[200, 100, 0, 5, "godot logo"], 2, 3]]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,11 +35,28 @@ func _ready():
 	tower_dict = {"ion": ion_scene}
 	
 	#initialising the game, will edit later
-	new_enemy()
+	new_enemy([100, 80, 0, 5, "godot logo"])
 	new_tower("ion",Vector2(64*6+32,64*5+32))
+	
+	spawnwait = 1
 
 func _process(delta):
 	# get_all_enemies_within(Vector2(300,100),100)
+	#idk what that was but i won't delete it just in case
+	
+	timing += delta
+	if not samplewave.empty():
+		if timing > spawnwait:
+			timing -= spawnwait
+			new_enemy(samplewave[0][0])
+			if samplewave[0][2] == 1:
+				samplewave.remove(0)
+			else:
+				samplewave[0][2] -= 1
+			if not samplewave.empty():
+				spawnwait = samplewave[0][1]
+
+func spawner(wave):
 	pass
 
 func new_tower(type,pos):
@@ -45,9 +66,10 @@ func new_tower(type,pos):
 	$towers.add_child(tower)
 
 # function for testing purposes; will update later
-func new_enemy():
+func new_enemy(stats):
 	var enemy
 	enemy = enemy_scene.instance()
+	enemy.stats = stats.duplicate(true)
 	$enemy_path.add_child(enemy)
 	enemies.append(enemy)
 
