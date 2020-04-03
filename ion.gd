@@ -35,6 +35,7 @@ func shoot():
 			enemy.health -= DAMAGE
 	can_shoot = false
 
+
 func _process(delta):
 	if can_shoot:
 		shoot()
@@ -43,7 +44,10 @@ func _process(delta):
 
 
 func turn_to(angle):
-	pass
+	if orthogonal:
+		rotation = round(angle/(PI/2)+1)*PI/2
+	else:
+		rotation = angle+PI/2
 
 
 

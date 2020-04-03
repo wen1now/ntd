@@ -18,7 +18,9 @@ var timing = 0
 #where enemy1 and boss_enemy are themselves arrays containing enemy information
 #after spawning an enemy you just delete the first element of the wave array
 
-#also why are we doing each
+#also why are we doing each tower separately
+#i think it might be better to do it all under one scene
+#like how enemies are done
 
 var spawnwait = 1 #initialised to 1, so that you wait 1 second for first enemy
 

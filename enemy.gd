@@ -23,8 +23,8 @@ func _ready():
 func _process(delta):
 	offset += speed * delta
 	
-	#testing, may be randomly commented in/out
-	timepassed += delta
-	if timepassed > 0.1:
-		print(health)
-		timepassed -= 0.1
+#	#testing, may be randomly commented in/out
+#	timepassed += delta
+#	if timepassed > 0.1:
+#		print(health)
+#		timepassed -= 0.1
