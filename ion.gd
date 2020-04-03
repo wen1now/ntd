@@ -4,7 +4,7 @@ var TARGET = "FIRST"
 var RANGE = 300
 var BULLET_RANGE = 300
 var RELOAD = 0.1
-var DAMAGE = 5
+var DAMAGE = 10
 var can_shoot = false
 
 var orthogonal = true

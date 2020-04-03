@@ -22,9 +22,15 @@ func _ready():
 
 func _process(delta):
 	offset += speed * delta
+	if health <= 0:
+		die()
 	
 #	#testing, may be randomly commented in/out
 #	timepassed += delta
 #	if timepassed > 0.1:
 #		print(health)
 #		timepassed -= 0.1
+
+func die():
+	get_parent().get_parent().enemies.erase(self)
+	queue_free()
